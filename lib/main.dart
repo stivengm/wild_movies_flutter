@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   }
 
   MaterialApp mateApp(context) => MaterialApp(
-    title: 'Flutter Demo',
+    title: 'WildMoviesApp',
     theme: ThemeData(
       textTheme: GoogleFonts.montserratTextTheme(
         Theme.of(context).textTheme
