@@ -21,7 +21,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           actions: actions! ? [
             IconButton(
               color: Colors.red,
-              icon: SvgPicture.asset('assets/icons/settings.svg'),
+              icon: SvgPicture.asset('assets/icons/settings.svg', width: 20.0,),
               onPressed: () => Navigator.pushNamed(context, 'settings'),
             )
           ] : [],
