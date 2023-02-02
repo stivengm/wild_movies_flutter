@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_svg: ^1.1.6
   google_fonts: ^4.0.1
+  material_design_icons_flutter: ^6.0.7096
 
 dev_dependencies:
   flutter_test:
