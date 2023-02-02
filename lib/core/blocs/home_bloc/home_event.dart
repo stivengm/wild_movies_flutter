@@ -6,3 +6,12 @@ abstract class HomeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class HandleChangeCurrentIndex extends HomeEvent {
+  final int currentIndex;
+  final String nameScreen;
+  const HandleChangeCurrentIndex({
+    required this.currentIndex,
+    required this.nameScreen
+  });
+}
