@@ -5,7 +5,8 @@ import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
-  const AppBarWidget({Key? key}) : super(key: key);
+  final String? nameScreen;
+  const AppBarWidget({Key? key, this.nameScreen}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
         return AppBar(
           backgroundColor: AppStyle.transparent,
           elevation: 0,
-          title: Text(state.nameScreen),
+          title: Text(nameScreen ?? state.nameScreen),
           actions: [
             IconButton(
               color: Colors.red,

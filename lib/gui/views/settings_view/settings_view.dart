@@ -6,8 +6,8 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarWidget(),
+    return const Scaffold(
+      appBar: AppBarWidget(nameScreen: 'Ajustes'),
     );
   }
 }
