@@ -6,7 +6,8 @@ import 'package:wild_movies_flutter/gui/app_style.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final String? nameScreen;
-  const AppBarWidget({Key? key, this.nameScreen}) : super(key: key);
+  final bool? actions;
+  const AppBarWidget({ Key? key, this.nameScreen, this.actions = true }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,14 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           backgroundColor: AppStyle.transparent,
           elevation: 0,
           title: Text(nameScreen ?? state.nameScreen),
-          actions: [
+          
+          actions: actions! ? [
             IconButton(
               color: Colors.red,
               icon: SvgPicture.asset('assets/icons/settings.svg'),
               onPressed: () => Navigator.pushNamed(context, 'settings'),
             )
-          ],
+          ] : [],
         );
       },
     );
