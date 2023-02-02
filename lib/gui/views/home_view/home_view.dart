@@ -21,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: const AppBarWidget(),
+          appBar: AppBarWidget(actions: state.currentIndex == 3 ? false : true),
           body: PageViewWidget(
             pageController: pageController,
           ),
