@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wild_movies_flutter/gui/app_style.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   const AppBarWidget({ Key? key }) : super( key: key );
@@ -7,6 +8,8 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppStyle.transparent,
+      elevation: 0,
       title: Text("Home"),
       actions: [
         IconButton(
