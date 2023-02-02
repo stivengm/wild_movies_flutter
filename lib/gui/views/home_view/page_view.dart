@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
+import 'package:wild_movies_flutter/gui/views/search_view/search_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/header_text_widget.dart';
 
 class PageViewWidget extends StatefulWidget {
@@ -33,8 +34,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
         ),
         Container(
         ),
-        Container(
-        ),
+        const SearchView(),
       ],
     );
   }
