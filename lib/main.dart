@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
 
   MaterialApp mateApp(context) => MaterialApp(
     title: 'WildMoviesApp',
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(
       textTheme: GoogleFonts.montserratTextTheme(
         Theme.of(context).textTheme
