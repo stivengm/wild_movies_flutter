@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:wild_movies_flutter/core/models/movies_populares_models.dart';
 import 'package:wild_movies_flutter/core/models/movies_test.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
+import 'package:wild_movies_flutter/gui/views/movie_information_view/movie_information_view.dart';
 
 class ItemPopular extends StatelessWidget {
   final SeriesModel movie;
@@ -12,6 +13,7 @@ class ItemPopular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MovieInformationView(movie: movie,))),
       child: Container(
         width: 120.0,
         margin: const EdgeInsets.symmetric(horizontal: 10.0),
