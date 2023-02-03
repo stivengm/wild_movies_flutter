@@ -5,6 +5,7 @@ import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/views/home_view/page_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
+import 'package:wild_movies_flutter/gui/widgets/loading.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -17,10 +18,18 @@ class _HomeViewState extends State<HomeView> {
   PageController pageController = PageController();
 
   @override
+  void initState() {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+    homeBloc.getConfiguration();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return Scaffold(
+        return state.isLoadingConfig ? const Loading() :
+        Scaffold(
           appBar: AppBarWidget(actions: state.currentIndex == 3 ? false : true),
           body: PageViewWidget(
             pageController: pageController,
