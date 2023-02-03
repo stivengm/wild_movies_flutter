@@ -9,8 +9,10 @@ abstract class HomeEvent extends Equatable {
 
 class HandleLoading extends HomeEvent {
   final bool? isLoadingConfig;
+  final bool? isLoadingPopular;
   const HandleLoading({
-    this.isLoadingConfig
+    this.isLoadingConfig,
+    this.isLoadingPopular
   });
 }
 
@@ -21,4 +23,14 @@ class HandleChangeCurrentIndex extends HomeEvent {
     required this.currentIndex,
     required this.nameScreen
   });
+}
+
+class HandleConfigApplication extends HomeEvent {
+  final ConfigAplicationModel? configurationApplication;
+  const HandleConfigApplication(this.configurationApplication);
+}
+
+class HandlePopularesMovies extends HomeEvent {
+  final PopularesModel? popularesMovies;
+  const HandlePopularesMovies(this.popularesMovies);
 }

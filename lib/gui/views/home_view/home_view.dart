@@ -19,16 +19,20 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    final homeBloc = BlocProvider.of<HomeBloc>(context);
-    homeBloc.getConfiguration();
+    getInfo();
     super.initState();
+  }
+
+  Future getInfo() async {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+    await homeBloc.getConfiguration();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return state.isLoadingConfig ? const Loading() :
+        return (state.isLoadingConfig || state.isLoadingPopular) ? const Loading() :
         Scaffold(
           appBar: AppBarWidget(actions: state.currentIndex == 3 ? false : true),
           body: PageViewWidget(
