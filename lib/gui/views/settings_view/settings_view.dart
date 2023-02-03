@@ -18,11 +18,7 @@ class SettingsView extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text("Iniciar sesión", style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor )),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: Text("Iniciar sesión", style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor )),
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, 'login'),
                 ),
               ]
             ),
