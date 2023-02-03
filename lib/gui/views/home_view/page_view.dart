@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/views/home_view/popular_section.dart';
+import 'package:wild_movies_flutter/gui/views/home_view/recomendations_section.dart';
 import 'package:wild_movies_flutter/gui/views/search_view/search_view.dart';
 
 class PageViewWidget extends StatefulWidget {
@@ -38,6 +39,8 @@ class _PageViewWidgetState extends State<PageViewWidget> {
             color: AppStyle.greyColor,
           ),
         ),
+        SizedBox(height: 15.0),
+        RecomendationsSection()
       ],
     );
   }
