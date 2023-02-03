@@ -1,13 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/views/home_view/popular_section.dart';
 import 'package:wild_movies_flutter/gui/views/search_view/search_view.dart';
-import 'package:wild_movies_flutter/gui/widgets/header_text_widget.dart';
-import 'package:wild_movies_flutter/gui/widgets/item_popular_widget.dart';
 
 class PageViewWidget extends StatefulWidget {
   final PageController pageController;
