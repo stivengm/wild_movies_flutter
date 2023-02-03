@@ -42,10 +42,14 @@ dependencies:
   flutter_svg: ^1.1.6
   google_fonts: ^4.0.1
   material_design_icons_flutter: ^6.0.7096
+  json_annotation: ^4.8.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
