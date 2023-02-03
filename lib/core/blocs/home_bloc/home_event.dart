@@ -7,6 +7,13 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class HandleLoading extends HomeEvent {
+  final bool? isLoadingConfig;
+  const HandleLoading({
+    this.isLoadingConfig
+  });
+}
+
 class HandleChangeCurrentIndex extends HomeEvent {
   final int currentIndex;
   final String nameScreen;
