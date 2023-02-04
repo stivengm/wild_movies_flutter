@@ -44,6 +44,7 @@ dependencies:
   material_design_icons_flutter: ^6.0.7096
   json_annotation: ^4.8.0
   http: ^0.13.5
+  flutter_rating_stars: ^1.0.3+4
 
 dev_dependencies:
   flutter_test:
