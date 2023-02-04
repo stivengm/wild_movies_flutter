@@ -19,7 +19,7 @@ class PopularSection extends StatelessWidget {
               const HeaderTextWidget(text: 'Popular'),
               state.popularesMovies != null ? Container(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
-                height: 260.0,
+                height: 270.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: state.popularesMovies!.results!.length,
