@@ -10,9 +10,11 @@ abstract class HomeEvent extends Equatable {
 class HandleLoading extends HomeEvent {
   final bool? isLoadingConfig;
   final bool? isLoadingPopular;
+  final bool? isLoadingRecomendations;
   const HandleLoading({
     this.isLoadingConfig,
-    this.isLoadingPopular
+    this.isLoadingPopular,
+    this.isLoadingRecomendations,
   });
 }
 
@@ -33,4 +35,9 @@ class HandleConfigApplication extends HomeEvent {
 class HandlePopularesMovies extends HomeEvent {
   final PopularesModel? popularesMovies;
   const HandlePopularesMovies(this.popularesMovies);
+}
+
+class HandleRecomendationsMovies extends HomeEvent {
+  final PopularesModel? recomendationsMovies;
+  const HandleRecomendationsMovies(this.recomendationsMovies);
 }

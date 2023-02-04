@@ -16,7 +16,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     on<HandleLoading>((event, emit) {
-      emit( state.copyWith( isLoadingConfig: event.isLoadingConfig, isLoadingPopular: event.isLoadingPopular ) );
+      emit( state.copyWith( 
+        isLoadingConfig: event.isLoadingConfig, 
+        isLoadingPopular: event.isLoadingPopular, 
+        isLoadingRecomendations: event.isLoadingRecomendations
+      ) );
     });
 
     on<HandleConfigApplication>((event, emit) {
@@ -25,6 +29,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     on<HandlePopularesMovies>((event, emit) {
       emit( state.copyWith( popularesMovies: event.popularesMovies ) );
+    });
+
+    on<HandleRecomendationsMovies>((event, emit) {
+      emit( state.copyWith( recomendationsMovies: event.recomendationsMovies ) );
     });
 
   }
@@ -37,12 +45,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final ConfigAplicationModel configAplicationModel = ConfigAplicationModel.fromRawJson(response.body);
       add( HandleConfigApplication(configAplicationModel) );
       add( const HandleLoading(isLoadingConfig: false) );
-      getPopular(configAplicationModel);
+      await getPopular(configAplicationModel);
+      await getRecomendations(configAplicationModel);
     }
 
   }
 
-  getPopular(ConfigAplicationModel configAplicationModel) async {
+  Future getPopular(ConfigAplicationModel configAplicationModel) async {
     add( const HandleLoading(isLoadingPopular: true) );
     try {
       var url = Uri.https(configAplicationModel.baseUrl!, '3/tv/popular', {
@@ -56,6 +65,26 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final PopularesModel movies = PopularesModel.fromJson(response.body);
         add( HandlePopularesMovies(movies) );
         add( const HandleLoading(isLoadingPopular: false) );
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future getRecomendations(ConfigAplicationModel configAplicationModel) async {
+    add( const HandleLoading(isLoadingRecomendations: true) );
+    try {
+      var url = Uri.https(configAplicationModel.baseUrl!, '/3/tv/top_rated', {
+        'api_key': configAplicationModel.apiKey,
+        'language': configAplicationModel.lenguaje,
+        'page': '1'
+      });
+
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final PopularesModel recomendations = PopularesModel.fromJson(response.body);
+        add( HandleRecomendationsMovies(recomendations) );
+        add( const HandleLoading(isLoadingRecomendations: false) );
       }
 
     } catch (e) {

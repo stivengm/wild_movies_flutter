@@ -19,9 +19,9 @@ class RecomendationsSection extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: const ScrollPhysics(),
-              itemCount: state.popularesMovies!.results!.length,
+              itemCount: state.recomendationsMovies!.results!.length,
               itemBuilder: (context, index) {
-                return ItemRecomendations(movie: state.popularesMovies!.results![index],);
+                return ItemRecomendations(movie: state.recomendationsMovies!.results![index],);
               }
             )
           ],

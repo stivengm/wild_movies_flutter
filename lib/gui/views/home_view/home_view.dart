@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return (state.isLoadingConfig || state.isLoadingPopular) ? const Loading() :
+        return (state.isLoadingConfig || state.isLoadingPopular || state.isLoadingRecomendations) ? const Loading() :
         Scaffold(
           appBar: AppBarWidget(actions: state.currentIndex == 3 ? false : true),
           body: PageViewWidget(
