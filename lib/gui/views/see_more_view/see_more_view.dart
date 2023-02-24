@@ -5,6 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/core/blocs/see_more_bloc/see_more_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
+import 'package:wild_movies_flutter/gui/views/movie_information_view/movie_information_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/primary_button_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/stars_ratings_widget.dart';
@@ -16,17 +17,8 @@ class SeeMoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size media = MediaQuery.of(context).size;
     final args = ModalRoute.of(context)!.settings.arguments as SeeMoreViewArguments;
-    final List<Widget> actionsSeeMore = [
-      IconButton(
-        color: AppStyle.whiteColor,
-        icon: const Icon(
-          MdiIcons.heartOutline
-        ),
-        onPressed: () => {},
-      )
-    ];
     return Scaffold(
-      appBar: AppBarWidget(nameScreen: args.titleSection, centerTitle: false, actions: actionsSeeMore,),
+      appBar: AppBarWidget(nameScreen: args.titleSection, centerTitle: false),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           return Container(
@@ -86,12 +78,15 @@ class SeeMoreView extends StatelessWidget {
 
               final movie = state.popularesMovies!.results![index];
               
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: FadeInImage(
-                  placeholder: const AssetImage('assets/no-image.jpg'),
-                  image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
-                  fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MovieInformationView(movie: movie,))),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: FadeInImage(
+                    placeholder: const AssetImage('assets/no-image.jpg'),
+                    image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
     
