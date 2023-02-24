@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final String? nameScreen;
   final bool? centerTitle;
-  final bool? actions;
+  final List<Widget>? actions;
   const AppBarWidget({ 
     Key? key, 
     this.nameScreen, 
-    this.actions = true, 
+    this.actions,
     this.centerTitle = true
   }) : super(key: key);
 
@@ -24,13 +23,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           elevation: 0,
           title: Text(nameScreen ?? state.nameScreen),
           centerTitle: centerTitle,
-          actions: actions! ? [
-            IconButton(
-              color: Colors.red,
-              icon: SvgPicture.asset('assets/icons/settings.svg', width: 20.0,),
-              onPressed: () => Navigator.pushNamed(context, 'settings'),
-            )
-          ] : [],
+          actions: actions,
         );
       },
     );

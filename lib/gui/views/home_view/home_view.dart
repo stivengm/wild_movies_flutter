@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
@@ -30,11 +31,17 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> actionsHome = [
+      IconButton(
+        icon: SvgPicture.asset('assets/icons/settings.svg', width: 20.0,),
+        onPressed: () => Navigator.pushNamed(context, 'settings'),
+      )
+    ];
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return (state.isLoadingConfig || state.isLoadingPopular || state.isLoadingRecomendations) ? const Loading() :
         Scaffold(
-          appBar: AppBarWidget(actions: state.currentIndex == 3 ? false : true),
+          appBar: AppBarWidget(actions: state.currentIndex == 3 ? [] : actionsHome),
           body: PageViewWidget(
             pageController: pageController,
           ),

@@ -8,7 +8,7 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(nameScreen: 'Ajustes', actions: false),
+      appBar: const AppBarWidget(nameScreen: 'Ajustes'),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

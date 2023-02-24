@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/models/movies_test.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
@@ -12,9 +13,18 @@ class MovieInformationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> actionsMovieInformation = [
+      IconButton(
+        color: AppStyle.whiteColor,
+        icon: const Icon(
+          MdiIcons.heartOutline
+        ),
+        onPressed: () => {},
+      )
+    ];
     Size media = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBarWidget(nameScreen: movie.name, centerTitle: false),
+      appBar: AppBarWidget(nameScreen: movie.name, centerTitle: false, actions: actionsMovieInformation,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
