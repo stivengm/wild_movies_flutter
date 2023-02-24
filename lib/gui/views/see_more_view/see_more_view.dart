@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
+import 'package:wild_movies_flutter/core/blocs/see_more_bloc/see_more_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/primary_button_widget.dart';
@@ -36,22 +37,26 @@ class SeeMoreView extends StatelessWidget {
                     flex: 1,
                     child: cardSwiper(context)
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 40.0),
-                    child: Column(
-                      children: [
-                        Text("The last of Us!", style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor, fontSize: 28.0 ),),
-                        const SizedBox(height: 20.0),
-                        const StarsRatings(voteAverage: 5.0),
-                        const SizedBox(height: 20.0),
-                        Text("IMDb: ${5.0}", style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
-                        const SizedBox(height: 20.0),
-                        SizedBox(
-                          width: media.width * .4,
-                          child: const PrimaryButton(text: 'Watch now', color: AppStyle.backgroundColor)
+                  BlocBuilder<SeeMoreBloc, SeeMoreState>(
+                    builder: (context, stateSeeMore) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(vertical: 40.0),
+                        child: Column(
+                          children: [
+                            Text(stateSeeMore.nameMovie != '' ? stateSeeMore.nameMovie : state.popularesMovies!.results![0].name!, style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor, fontSize: 28.0 ),),
+                            const SizedBox(height: 20.0),
+                            const StarsRatings(voteAverage: 5.0),
+                            const SizedBox(height: 20.0),
+                            Text("IMDb: ${5.0}", style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
+                            const SizedBox(height: 20.0),
+                            SizedBox(
+                              width: media.width * .4,
+                              child: const PrimaryButton(text: 'Watch now', color: AppStyle.backgroundColor)
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -74,6 +79,7 @@ class SeeMoreView extends StatelessWidget {
             layout: SwiperLayout.DEFAULT,
             itemWidth: media.width * .6,
             itemHeight: media.height * 9,
+            onIndexChanged: (value) => onIndexChanged(value, context),
             scale: 0.8,
             viewportFraction: 0.8,
             itemBuilder: (context, index) {
@@ -93,6 +99,14 @@ class SeeMoreView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  onIndexChanged(index, context) {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+    final seeMoreBloc = BlocProvider.of<SeeMoreBloc>(context);
+    seeMoreBloc.add( HandleInformationMovie(
+      nameMovie: homeBloc.state.popularesMovies!.results![index].name!)
     );
   }
 
