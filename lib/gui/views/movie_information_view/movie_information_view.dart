@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/models/movies_test.dart';
+import 'package:wild_movies_flutter/core/providers/date_providers.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
 
-class MovieInformationView extends StatelessWidget {
+class MovieInformationView extends StatelessWidget with DateProviders {
   final SeriesModel movie;
   const MovieInformationView({ 
     Key? key, 
@@ -47,7 +48,7 @@ class MovieInformationView extends StatelessWidget {
                 children: [
                   Text("IMDb: ${movie.voteAverage}", style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
                   const Text(" | "),
-                  Text(movie.firstAirDate.toString(), style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
+                  Text(convertDate(movie.firstAirDate.toString()), style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
                 ],
               ),
               const Padding(
