@@ -16,7 +16,7 @@ class MovieInformationView extends StatelessWidget with DateProviders {
   Widget build(BuildContext context) {
     final List<Widget> actionsMovieInformation = [
       IconButton(
-        color: AppStyle.whiteColor,
+        color: AppStyle.greyColor,
         icon: const Icon(
           MdiIcons.heartOutline
         ),

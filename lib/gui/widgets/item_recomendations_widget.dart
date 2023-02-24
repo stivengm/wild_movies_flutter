@@ -53,8 +53,8 @@ class ItemRecomendations extends StatelessWidget {
                           ),
                           IconButton(
                             icon: const Icon(
-                              MdiIcons.heart,
-                              color: AppStyle.primaryColor,
+                              MdiIcons.heartOutline,
+                              color: AppStyle.greyColor,
                             ),
                             onPressed: () {}
                           )
