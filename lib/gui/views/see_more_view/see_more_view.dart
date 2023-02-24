@@ -43,11 +43,11 @@ class SeeMoreView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 40.0),
                         child: Column(
                           children: [
-                            Text(stateSeeMore.nameMovie != '' ? stateSeeMore.nameMovie : state.popularesMovies!.results![0].name!, style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor, fontSize: 28.0 ),),
+                            Text(stateSeeMore.nameMovie ?? state.popularesMovies!.results![0].name!, style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.whiteColor, fontSize: 28.0 ),),
                             const SizedBox(height: 20.0),
-                            const StarsRatings(voteAverage: 5.0),
+                            StarsRatings(voteAverage: stateSeeMore.voteAverage ?? state.popularesMovies!.results![0].voteAverage!),
                             const SizedBox(height: 20.0),
-                            Text("IMDb: ${5.0}", style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
+                            Text("IMDb: ${stateSeeMore.voteAverage ?? state.popularesMovies!.results![0].voteAverage!}", style: Theme.of(context).textTheme.headlineSmall!.copyWith( color: AppStyle.greyColor, fontSize: 10.0 ),),
                             const SizedBox(height: 20.0),
                             SizedBox(
                               width: media.width * .4,
@@ -106,8 +106,9 @@ class SeeMoreView extends StatelessWidget {
     final homeBloc = BlocProvider.of<HomeBloc>(context);
     final seeMoreBloc = BlocProvider.of<SeeMoreBloc>(context);
     seeMoreBloc.add( HandleInformationMovie(
-      nameMovie: homeBloc.state.popularesMovies!.results![index].name!)
-    );
+      nameMovie: homeBloc.state.popularesMovies!.results![index].name!,
+      voteAverage: homeBloc.state.popularesMovies!.results![index].voteAverage!
+    ));
   }
 
 }
