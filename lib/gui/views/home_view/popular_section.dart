@@ -36,7 +36,7 @@ class PopularSection extends StatelessWidget {
                     const SizedBox(),
                     GestureDetector(
                       onTap: () {
-                        print("Ver más...");
+                        Navigator.pushNamed(context, 'seeMore');
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
