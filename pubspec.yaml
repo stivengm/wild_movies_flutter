@@ -45,6 +45,8 @@ dependencies:
   json_annotation: ^4.8.0
   http: ^0.13.5
   flutter_rating_stars: ^1.0.3+4
+  # sqflite: ^2.2.4+1
+  card_swiper: ^2.0.4
 
 dev_dependencies:
   flutter_test:
