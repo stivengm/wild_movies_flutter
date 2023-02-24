@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
+import 'package:wild_movies_flutter/gui/views/see_more_view/see_more_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/header_text_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/item_popular_widget.dart';
 
@@ -36,7 +37,12 @@ class PopularSection extends StatelessWidget {
                     const SizedBox(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, 'seeMore');
+                        Navigator.pushNamed(
+                          context, 
+                          'seeMore',
+                          arguments: SeeMoreViewArguments(
+                            'Populares'
+                          ));
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
