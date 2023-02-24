@@ -11,7 +11,10 @@ class SeeMoreBloc extends Bloc<SeeMoreEvent, SeeMoreState> {
     });
 
     on<HandleInformationMovie>((event, emit) {
-      emit( state.copyWith( nameMovie: event.nameMovie ) );
+      emit( state.copyWith(
+        nameMovie: event.nameMovie,
+        voteAverage: event.voteAverage
+      ));
     });
 
   }
