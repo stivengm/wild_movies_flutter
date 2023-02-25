@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/models/movies_test.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
-import 'package:wild_movies_flutter/gui/views/movie_information_view/movie_information_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/primary_button_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/stars_ratings_widget.dart';
 
@@ -15,7 +14,7 @@ class ItemRecomendations extends StatelessWidget {
   Widget build(BuildContext context) {
     Size media = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MovieInformationView(movie: movie,))),
+      onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         child: Row(

@@ -79,7 +79,7 @@ class SeeMoreView extends StatelessWidget {
               final movie = state.popularesMovies!.results![index];
               
               return GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MovieInformationView(movie: movie,))),
+                onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: FadeInImage(
