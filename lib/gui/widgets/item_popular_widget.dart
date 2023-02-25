@@ -12,6 +12,7 @@ class ItemPopular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    movie.heroId = 'popular-${movie.id}';
     return GestureDetector(
       onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
       child: Container(
@@ -20,14 +21,17 @@ class ItemPopular extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 178.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
-                  fit: BoxFit.contain
+            Hero(
+              tag: movie.heroId!,
+              child: Container(
+                height: 178.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
+                    fit: BoxFit.contain
+                  ),
+                  borderRadius: BorderRadius.circular(8.0)
                 ),
-                borderRadius: BorderRadius.circular(8.0)
               ),
             ),
             const SizedBox(height: 5.0),

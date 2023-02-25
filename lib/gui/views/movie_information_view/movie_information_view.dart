@@ -75,12 +75,15 @@ class _PosterAndTitle extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                placeholder: const AssetImage('assets/no-image.jpg'),
-                image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
-                height: 200.0,
+            Hero(
+              tag: movie.heroId!,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: FadeInImage(
+                  placeholder: const AssetImage('assets/no-image.jpg'),
+                  image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+                  height: 200.0,
+                ),
               ),
             ),
             const SizedBox( width: 20.0),

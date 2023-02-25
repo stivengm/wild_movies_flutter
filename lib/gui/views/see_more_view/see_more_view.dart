@@ -77,15 +77,19 @@ class SeeMoreView extends StatelessWidget {
             itemBuilder: (context, index) {
 
               final movie = state.popularesMovies!.results![index];
+              movie.heroId = 'swiper-${movie.id}';
               
               return GestureDetector(
                 onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: FadeInImage(
-                    placeholder: const AssetImage('assets/no-image.jpg'),
-                    image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
-                    fit: BoxFit.cover,
+                child: Hero(
+                  tag: movie.heroId!,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: FadeInImage(
+                      placeholder: const AssetImage('assets/no-image.jpg'),
+                      image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               );

@@ -13,21 +13,25 @@ class ItemRecomendations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size media = MediaQuery.of(context).size;
+    movie.heroId = 'recomendations-${movie.id}';
     return GestureDetector(
       onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         child: Row(
           children: [
-            Container(
-              height: 178.0,
-              width: 120.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
-                  fit: BoxFit.contain
+            Hero(
+              tag: movie.heroId!,
+              child: Container(
+                height: 178.0,
+                width: 120.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
+                    fit: BoxFit.contain
+                  ),
+                  borderRadius: BorderRadius.circular(8.0)
                 ),
-                borderRadius: BorderRadius.circular(8.0)
               ),
             ),
             Flexible(
