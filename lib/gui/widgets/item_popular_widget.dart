@@ -23,14 +23,13 @@ class ItemPopular extends StatelessWidget {
           children: [
             Hero(
               tag: movie.heroId!,
-              child: Container(
-                height: 178.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
-                    fit: BoxFit.contain
-                  ),
-                  borderRadius: BorderRadius.circular(8.0)
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: FadeInImage(
+                  placeholder: const AssetImage('assets/no-image.jpg'),
+                  image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+                  fit: BoxFit.cover,
+                  height: 178.0,
                 ),
               ),
             ),
