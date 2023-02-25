@@ -89,6 +89,8 @@ class SeriesModel {
     double? voteAverage;
     int? voteCount;
 
+    String? heroId;
+
     factory SeriesModel.fromJson(String str) => SeriesModel.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
