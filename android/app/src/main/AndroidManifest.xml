@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wild_movies_flutter">
+    package="com.ggp0.wild_movies_flutter">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="wild_movies_flutter"
+        android:label="Wild Movies"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
