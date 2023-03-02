@@ -19,6 +19,9 @@ class SearchView extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           hintText: 'Película...',
+          hintStyle: const TextStyle(
+            color: AppStyle.greyColor
+          ),
           border: InputBorder.none,
           labelStyle: const TextStyle(
             color: AppStyle.greyColor
