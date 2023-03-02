@@ -25,7 +25,7 @@ class SettingsView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 50.0),
-            child: Text("Versión: 1.0.0", style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.greyColor, fontSize: 11.0 ),),
+            child: Text("Versión: 1.0.3", style: Theme.of(context).textTheme.headline6!.copyWith( color: AppStyle.greyColor, fontSize: 11.0 ),),
           )
         ],
       ),
