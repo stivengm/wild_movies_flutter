@@ -5,6 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
 import 'package:wild_movies_flutter/gui/views/home_view/page_view.dart';
+import 'package:wild_movies_flutter/gui/views/search_view/search_delegate.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/loading.dart';
 
@@ -69,6 +70,13 @@ class _HomeViewState extends State<HomeView> {
   }
 
   getNameScreen(i) {
+    if (i == 3) {
+      showSearch(
+        context: context,
+        delegate: MovieSearchDelegate(),
+      );
+      return;
+    }
     final homeBloc = BlocProvider.of<HomeBloc>(context);
     String nameScreen = "";
     switch (i) {
