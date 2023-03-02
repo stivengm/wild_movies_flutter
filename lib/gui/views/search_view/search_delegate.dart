@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:wild_movies_flutter/core/models/movies_test.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
+import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 
 class MovieSearchDelegate extends SearchDelegate {
 
@@ -66,7 +70,45 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+    final popularesMovies = homeBloc.state.popularesMovies!.results!;
+
+    if (query.isEmpty) {
+      return ListView.builder(
+        itemCount: popularesMovies.length,
+        itemBuilder: ( _ , index) => ItemResults(popularesMovies[index])
+      );
+    }
+
     return Text("buildSuggestions: $query");
   }
 
+}
+
+class ItemResults extends StatelessWidget {
+  final SeriesModel movie;
+  const ItemResults(this.movie, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    movie.heroId = 'search-${movie.id}';
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+      leading: Hero(
+        tag: movie.heroId!,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: FadeInImage(
+            placeholder: const AssetImage('assets/no-image.jpg'),
+            image: NetworkImage('https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+            fit: BoxFit.cover,
+            height: 100.0,
+          ),
+        ),
+      ),
+      title: Text("${movie.name}"),
+      subtitle: Text("${movie.overview}", style: Theme.of(context).textTheme.headline4!.copyWith(fontSize: 10.0), maxLines: 2),
+      onTap: () => Navigator.pushNamed(context, 'moreInformation', arguments: movie),
+    );
+  }
 }
