@@ -19,7 +19,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return AppBar(
-          backgroundColor: AppStyle.transparent,
+          backgroundColor: AppStyle.backgroundColor,
           elevation: 0,
           title: Text(nameScreen ?? state.nameScreen),
           centerTitle: centerTitle,
