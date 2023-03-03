@@ -28,9 +28,11 @@ class SeeMoreView extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
+                      stops: const [0.01, 0.6, 9],
                       colors: [
                       AppStyle.backgroundColor,
                       AppStyle.backgroundColor.withOpacity(.9),
+                      Colors.black,
                       ],
                     )
                   ),
