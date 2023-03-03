@@ -10,5 +10,6 @@ abstract class SeeMoreEvent extends Equatable {
 class HandleInformationMovie extends SeeMoreEvent {
   final String nameMovie;
   final double? voteAverage;
-  const HandleInformationMovie({ required this.nameMovie, this.voteAverage });
+  final String? posterPath;
+  const HandleInformationMovie({ required this.nameMovie, this.voteAverage, this.posterPath });
 }

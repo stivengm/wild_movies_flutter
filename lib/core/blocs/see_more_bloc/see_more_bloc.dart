@@ -6,14 +6,12 @@ part 'see_more_state.dart';
 
 class SeeMoreBloc extends Bloc<SeeMoreEvent, SeeMoreState> {
   SeeMoreBloc() : super(SeeMoreInitial()) {
-    on<SeeMoreEvent>((event, emit) {
-      // TODO: implement event handler
-    });
 
     on<HandleInformationMovie>((event, emit) {
       emit( state.copyWith(
         nameMovie: event.nameMovie,
-        voteAverage: event.voteAverage
+        voteAverage: event.voteAverage,
+        posterPath: event.posterPath
       ));
     });
 
