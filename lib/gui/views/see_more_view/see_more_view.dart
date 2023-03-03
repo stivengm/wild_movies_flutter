@@ -25,7 +25,14 @@ class SeeMoreView extends StatelessWidget {
               return Container(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   decoration: BoxDecoration(
-                    color: AppStyle.backgroundColor.withOpacity(.9)
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                      AppStyle.backgroundColor,
+                      AppStyle.backgroundColor.withOpacity(.9),
+                      ],
+                    )
                   ),
                   child: Column(
                     children: [
