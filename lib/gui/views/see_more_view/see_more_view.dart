@@ -1,11 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wild_movies_flutter/core/blocs/home_bloc/home_bloc.dart';
 import 'package:wild_movies_flutter/core/blocs/see_more_bloc/see_more_bloc.dart';
 import 'package:wild_movies_flutter/gui/app_style.dart';
-import 'package:wild_movies_flutter/gui/views/movie_information_view/movie_information_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/app_bar_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/primary_button_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/stars_ratings_widget.dart';
