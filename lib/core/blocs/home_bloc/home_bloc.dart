@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:wild_movies_flutter/core/models/config_aplication_model.dart';
-// import 'package:wild_movies_flutter/core/models/movies_populares_models.dart';
 import 'package:wild_movies_flutter/core/models/movies_test.dart';
+import 'package:wild_movies_flutter/core/globals.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -43,6 +43,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       final ConfigAplicationModel configAplicationModel = ConfigAplicationModel.fromRawJson(response.body);
+      configDataGlobalsApp = configAplicationModel;
       add( HandleConfigApplication(configAplicationModel) );
       add( const HandleLoading(isLoadingConfig: false) );
       await getPopular(configAplicationModel);
