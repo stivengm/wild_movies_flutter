@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     title: 'WildMoviesApp',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
+      brightness: Brightness.dark,
       textTheme: GoogleFonts.montserratTextTheme(
         Theme.of(context).textTheme
       ),
