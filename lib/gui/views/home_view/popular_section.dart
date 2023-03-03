@@ -6,8 +6,33 @@ import 'package:wild_movies_flutter/gui/views/see_more_view/see_more_view.dart';
 import 'package:wild_movies_flutter/gui/widgets/header_text_widget.dart';
 import 'package:wild_movies_flutter/gui/widgets/item_popular_widget.dart';
 
-class PopularSection extends StatelessWidget {
+class PopularSection extends StatefulWidget {
   const PopularSection({ Key? key }) : super( key: key );
+
+  @override
+  State<PopularSection> createState() => _PopularSectionState();
+}
+
+class _PopularSectionState extends State<PopularSection> {
+
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    scrollController.addListener(() {
+
+      if ( scrollController.position.pixels >= scrollController.position.maxScrollExtent - 500 ) {
+
+      }
+
+      print( scrollController.position.pixels );
+      print( scrollController.position.maxScrollExtent );
+
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +47,7 @@ class PopularSection extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 height: 270.0,
                 child: ListView.builder(
+                  controller: scrollController,
                   scrollDirection: Axis.horizontal,
                   itemCount: state.popularesMovies!.results!.length,
                   itemBuilder: (context, index) {
