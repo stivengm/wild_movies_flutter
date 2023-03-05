@@ -53,6 +53,14 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.3.3
   json_serializable: ^6.6.0
+  flutter_launcher_icons: ^0.11.0
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/Icon2.png"
+  adaptive_icon_foreground: "assets/Icon2.png"
+  adaptive_icon_background: "#ed1e79"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
